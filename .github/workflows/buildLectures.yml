@@ -68,16 +68,6 @@ jobs:
           cp -r .//lectures/notes/output/* target-repo/AIIT4/lectures
           cp -r .//lectures/slides/output/* target-repo/AIIT4/sildes
           cp -r .//lectures/cheatSheets/output/* target-repo/AIIT4/cheatSheets
-          
-
-      - name: Commit and push to target repository
-        run: |
-          cd target-repo
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Update files from source repository"
-          git push
 
       - name: Generate pdf-links.md with PDF links
         run: |
@@ -114,4 +104,12 @@ jobs:
           if ! grep -q "AIIT4_Skripten.md" README.md; then
             echo -e "\n👉 [Unterlagen für AIIT4](./AIIT4_Skripten.md)" >> README.md
           fi
-      
+
+      - name: Commit and push to target repository
+        run: |
+          cd target-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update files from source repository"
+          git push
