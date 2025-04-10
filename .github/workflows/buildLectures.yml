@@ -66,7 +66,7 @@ jobs:
           mkdir -p target-repo/AIIT4/cheatSheets/
           
           cp -r .//lectures/notes/output/* target-repo/AIIT4/lectures/
-          cp -r .//lectures/slides/output/* target-repo/AIIT4/sildes/
+          cp -r .//lectures/slides/output/* target-repo/AIIT4/slides/
           cp -r .//lectures/cheatSheets/output/* target-repo/AIIT4/cheatSheets/
 
       - name: Generate pdf-links.md with PDF links
