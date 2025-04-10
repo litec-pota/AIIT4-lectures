@@ -74,29 +74,29 @@ jobs:
           cd target-repo
 
           echo "## AIIT4 PDFs" > AIIT4_Skripten.md
-          echo "" >> pdf-links.md
+          echo "" >> AIIT4_Skripten.md
       
           echo "### Notes" >> AIIT4_Skripten.md
           for file in AIIT4/lectures/*.pdf; do
             filename=$(basename "$file")
-            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/lectures/$filename)" >> pdf-links.md
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/lectures/$filename)" >> AIIT4_Skripten.md
           done
       
-          echo "" >> pdf-links.md
+          echo "" >> AIIT4_Skripten.md
           echo "### Slides" >> AIIT4_Skripten.md
           for file in AIIT4/slides/*.pdf; do
             filename=$(basename "$file")
-            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/slides/$filename)" >> pdf-links.md
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/slides/$filename)" >> AIIT4_Skripten.md
           done
       
-          echo "" >> pdf-links.md
+          echo "" >> AIIT4_Skripten.md
           echo "### CheatSheets" >> AIIT4_Skripten.md
           for file in AIIT4/cheatSheets/*.pdf; do
             filename=$(basename "$file")
-            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/cheatSheets/$filename)" >> pdf-links.md
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/cheatSheets/$filename)" >> AIIT4_Skripten.md
           done
 
-      - name: Add link to pdf-links.md in README.md
+      - name: Add link to AIIT4_Skripten.md in README.md
         run: |
           cd target-repo
 
