@@ -1,0 +1,4 @@
+{
+    "pandoc.pdfOptString": " --template=../style/litecStyle.tex --toc --highlight-style kate",
+    "cSpell.language": "en, de-de"
+}

@@ -1,0 +1,4 @@
+{
+    "pandoc.pdfOptString": "-t beamer --template=../style/litecStyleSlides.tex --highlight-style kate",
+    "cSpell.language": "en, de-de"
+}

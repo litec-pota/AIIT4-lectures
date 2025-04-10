@@ -1,0 +1,76 @@
+name: Convert Markdown to PDF
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:            # Ermöglicht manuelles Ausführen
+
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  
+            
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive texlive-latex-extra texlive-lang-german
+
+      - name: Run pandoc on notes
+        run: |
+          cd ./lectures/notes
+          [ -d output ] || mkdir output
+          for file in ./*.md; do
+            output="${file%.md}.pdf"
+            pandoc "$file" --output=output/"$output" --template=../style/litecStyle.tex --toc --highlight-style kate
+          done
+
+      - name: Run pandoc on slides
+        run: |
+          cd ./lectures/slides
+          [ -d output ] || mkdir output
+          for file in ./*.md; do
+            output="${file%.md}.pdf"
+            pandoc "$file" --output=output/"$output" -t beamer --template=../style/litecStyleSlides.tex --highlight-style kate
+          done
+
+      - name: Run pandoc on cheatSheets
+        run: |
+          cd ./lectures/cheatSheets
+          [ -d output ] || mkdir output
+          for file in ./*.md; do
+            output="${file%.md}.pdf"
+            pandoc "$file" --output=output/"$output" --template=../style/litecStyle.tex --highlight-style kate
+          done
+
+      
+      #- name: commit
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: |
+      #    git config user.name "github-actions[bot]"
+      #    git config user.email "github-actions[bot]@users.noreply.github.com"
+      #    git add -f ./lectures/notes/output/*.pdf
+      #    git commit -m "Auto generated pdfs from AIIT3-lectures Repo"
+      #    git push
+
+      - name: Prepare target repository
+        run: |
+          git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/litec-pota/Skripten.git target-repo
+          cp -r .//lectures/notes/output/* target-repo/
+          cp -r .//lectures/slides/output/* target-repo/
+          cp -r .//lectures/cheatSheets/output/* target-repo/
+          
+
+      - name: Commit and push to target repository
+        run: |
+          cd target-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update files from source repository"
+          git push
+
+      
