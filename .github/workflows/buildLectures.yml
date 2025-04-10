@@ -79,4 +79,39 @@ jobs:
           git commit -m "Update files from source repository"
           git push
 
+      - name: Generate pdf-links.md with PDF links
+        run: |
+          cd target-repo
+
+          echo "## AIIT4 PDFs" > AIIT4_Skripten.md
+          echo "" >> pdf-links.md
+      
+          echo "### Notes" >> AIIT4_Skripten.md
+          for file in AIIT4/lectures/*.pdf; do
+            filename=$(basename "$file")
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/lectures/$filename)" >> pdf-links.md
+          done
+      
+          echo "" >> pdf-links.md
+          echo "### Slides" >> AIIT4_Skripten.md
+          for file in AIIT4/slides/*.pdf; do
+            filename=$(basename "$file")
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/slides/$filename)" >> pdf-links.md
+          done
+      
+          echo "" >> pdf-links.md
+          echo "### CheatSheets" >> AIIT4_Skripten.md
+          for file in AIIT4/cheatSheets/*.pdf; do
+            filename=$(basename "$file")
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/cheatSheets/$filename)" >> pdf-links.md
+          done
+
+      - name: Add link to pdf-links.md in README.md
+        run: |
+          cd target-repo
+
+          # Füge den Link nur hinzu, wenn er nicht schon drinsteht
+          if ! grep -q "AIIT4_Skripten.md" README.md; then
+            echo -e "\n👉 [Unterlagen für AIIT4](./AIIT4_Skripten.md)" >> README.md
+          fi
       
