@@ -59,10 +59,51 @@ jobs:
       - name: Prepare target repository
         run: |
           git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/litec-pota/Skripten.git target-repo
-          cp -r .//lectures/notes/output/* target-repo/
-          cp -r .//lectures/slides/output/* target-repo/
-          cp -r .//lectures/cheatSheets/output/* target-repo/
+
+          # Zielordner erstellen, falls sie noch nicht existieren
+          mkdir -p target-repo/AIIT4/lectures
+          mkdir -p target-repo/AIIT4/slides
+          mkdir -p target-repo/AIIT4/cheatSheets
           
+          cp -r .//lectures/notes/output/* target-repo/AIIT4/lectures
+          cp -r .//lectures/slides/output/* target-repo/AIIT4/sildes
+          cp -r .//lectures/cheatSheets/output/* target-repo/AIIT4/cheatSheets
+
+      - name: Generate pdf-links.md with PDF links
+        run: |
+          cd target-repo
+
+          echo "## AIIT4 PDFs" > AIIT4_Skripten.md
+          echo "" >> AIIT4_Skripten.md
+      
+          echo "### Notes" >> AIIT4_Skripten.md
+          for file in AIIT4/lectures/*.pdf; do
+            filename=$(basename "$file")
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/lectures/$filename)" >> AIIT4_Skripten.md
+          done
+      
+          echo "" >> AIIT4_Skripten.md
+          echo "### Slides" >> AIIT4_Skripten.md
+          for file in AIIT4/slides/*.pdf; do
+            filename=$(basename "$file")
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/slides/$filename)" >> AIIT4_Skripten.md
+          done
+      
+          echo "" >> AIIT4_Skripten.md
+          echo "### CheatSheets" >> AIIT4_Skripten.md
+          for file in AIIT4/cheatSheets/*.pdf; do
+            filename=$(basename "$file")
+            echo "- [$filename](https://litec-pota.github.io/Skripten/AIIT4/cheatSheets/$filename)" >> AIIT4_Skripten.md
+          done
+
+      - name: Add link to AIIT4_Skripten.md in README.md
+        run: |
+          cd target-repo
+
+          # Füge den Link nur hinzu, wenn er nicht schon drinsteht
+          if ! grep -q "AIIT4_Skripten.md" README.md; then
+            echo -e "\n👉 [Unterlagen für AIIT4](./AIIT4_Skripten.md)" >> README.md
+          fi
 
       - name: Commit and push to target repository
         run: |
@@ -72,5 +113,3 @@ jobs:
           git add .
           git commit -m "Update files from source repository"
           git push
-
-      
