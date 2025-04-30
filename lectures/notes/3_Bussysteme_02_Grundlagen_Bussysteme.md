@@ -1,6 +1,6 @@
 ---
 title: Skriptum Bussysteme
-subtitle: Teil 12 Grundlagen Bussysteme
+subtitle: Teil 2 Grundlagen Bussysteme
 author: 
     - DI(FH) Andreas Pötscher, HTL Litec
 documentclass: scrartcl

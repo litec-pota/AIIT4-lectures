@@ -1,6 +1,6 @@
 ---
 title: Skriptum Bussysteme
-subtitle: Teil 14 CAN-Bus
+subtitle: Teil 4 CAN-Bus
 author: 
     - DI(FH) Andreas Pötscher, HTL Litec
 documentclass: scrartcl

@@ -1,6 +1,6 @@
 ---
 title: Skriptum Bussysteme
-subtitle: Teil 13 Chip Bussysteme
+subtitle: Teil 3 Chip Bussysteme
 author: 
     - DI(FH) Andreas Pötscher, HTL Litec
 documentclass: scrartcl

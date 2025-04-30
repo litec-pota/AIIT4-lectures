@@ -1,6 +1,6 @@
 ---
 title: Skriptum Bussysteme
-subtitle: Teil 15 Profinet
+subtitle: Teil 5 Profinet
 author: 
     - DI(FH) Andreas Pötscher, HTL Litec
 documentclass: scrartcl

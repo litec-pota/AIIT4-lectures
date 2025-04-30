@@ -1,0 +1,17 @@
+flowchart LR
+    subgraph While-Loop
+        direction TB
+        4(Line1) 
+        --> 5(Line2)
+        --> 6(Line3)
+        --> 7(Line4)
+        --> 4(Line1)
+    end
+    subgraph Interrupt-Service-Routine
+        direction TB
+        5(Line2)
+        -->|Interrupt| ISR1(ISR Line1)
+        --> ISR2(ISR Line2)  
+        --> 6(Line3)
+    end
+
