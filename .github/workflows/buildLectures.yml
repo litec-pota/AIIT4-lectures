@@ -61,13 +61,13 @@ jobs:
           git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/litec-pota/Skripten.git target-repo
 
           # Zielordner erstellen, falls sie noch nicht existieren
-          mkdir -p target-repo/AIIT4/lectures
-          mkdir -p target-repo/AIIT4/slides
-          mkdir -p target-repo/AIIT4/cheatSheets
+          mkdir -p target-repo/AIIT4/lectures/
+          mkdir -p target-repo/AIIT4/slides/
+          mkdir -p target-repo/AIIT4/cheatSheets/
           
-          cp -r .//lectures/notes/output/* target-repo/AIIT4/lectures
-          cp -r .//lectures/slides/output/* target-repo/AIIT4/sildes
-          cp -r .//lectures/cheatSheets/output/* target-repo/AIIT4/cheatSheets
+          cp -r .//lectures/notes/output/* target-repo/AIIT4/lectures/
+          cp -r .//lectures/slides/output/* target-repo/AIIT4/slides/
+          cp -r .//lectures/cheatSheets/output/* target-repo/AIIT4/cheatSheets/
 
       - name: Generate pdf-links.md with PDF links
         run: |
