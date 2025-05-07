@@ -23,7 +23,6 @@ Datum            | Beschreibung der durchgeführten Änderung                   
 
 # Einführung
 
-% Allgemeine Einführung / Bustoplogien / Fehlererkennung (Paritätsbit / Prüfsumme) / Buszugriffssteuerung
 
 Ein Bus ist ein System zur Datenübertragung zwischen mehreren Teilnehmern über ein gemeinsames Übertragungsmedium. Die an einen Bus angeschlossenen Komponenten werden auch als Busteilnehmer oder Busknoten bezeichnet.
 
@@ -74,6 +73,46 @@ Bussysteme sind oftmals für einen bestimmten Anwendungsbereich konzipiert, was 
 
 # Automatisierungspyramide
 
+Die Verwendung von Bussystemen und Datenkommunikation kann, im Industriebereich, sehr gut über die Automatisierungspyramide gezeigt werden.
+
+Die Informationen, die in den verschiedenen Prozessebenen zu übertragen sind, können nach Menge und Aufgabe der benötigten Komponenten in einer Pyramidenstruktur dargestellt werden.
+
+![Automatisierungspyramide](../imgs/3_Bussysteme_02_Grundlagen_Bussysteme/Automatisierungspyramide.png){ width=80% }
+
+Die Automatisierungspyramide teilt einen Produktionsbetrieb in 5 verschiedene Ebenen in denen verschieden IT Systeme zum Einsatz kommen. Es müssen aber nicht in jedem Betrieb alle Ebenen vorhanden sein.
 
 
+## Unternehmensleitebene
 
+Auf der Unternehmensleitebene werden die Managementaufgaben eines Produktionsunternehmens erledigt. Dazu gehören Auftragseingang, Bestellungen, Verwaltung, Abrechnung, usw.
+
+Dazu wird typischerweise ein **ERP (Enterprise Resourece Planing)** System Verwendet.
+
+## Betriebsleitebene
+
+Auf der Betriebsleitebene wird die Produktion detailiert geplant. Es werden die Endprodukte in einzelne Baugruppen und Teile aufgeteilt. Weiters wird entschieden was, wann, in welcher Menge auf welcher Produktionsanlage produziert wird. 
+
+Dazu wird typischerweise eine **MES (Manufactoring Execution System)** verwendet.
+
+## Prozessleitebene
+
+In der Steuerungs- oder Zellebene werden alle Automationsaufgaben von Automatisierungsgeräten wie Maschinen- oder Anlagensteuerungen ausgeführt. Die Automatisierungsgeräte sind in der Regel mit lokalen Bedienstationen ausgestattet. Die Steuerung wird hier meistens in sogenannten Leitwarten ausgeführt. 
+
+Dazu wird typischerweise ein **SCADA (Supervisory Control and Data Acquisition)** System verwendet.
+
+
+## Steuerungsebene
+
+Auf der Steuerungsebene werden die einzelnen Maschinen und Anlagen gesteuert. Die Daten dazu erhalten die Steuerungen von der Prozessleitebene. 
+
+Dazu wird typischerweise eine **SPS (Speicher programmierbare Steuerung)** verwendet.
+
+## Feldebene
+
+Auf der Feldebene befinden sich die Sensoren und Aktoren die in der Produktionsanlage verbaut sind. Dazu zählen alle Arten von Sensoren, elektrische Antriebe, pneumatische Antriebe, hydraulische Antriebe usw.
+
+# Bustoplogien 
+
+# Fehlererkennung 
+
+# Buszugriffssteuerung
