@@ -1,0 +1,31 @@
+graph LR
+  %% Broker (als Wolke dargestellt)
+  Broker[("☁️ **MQTT** <br/> **Broker**")]
+
+  %% Publisher-Clients links
+  Pub1(Temperatursensor <br/> Küche)
+  Pub2(Temperatursensor <br/> Bad)
+  Pub3(Luftfeuchtesensor <br/> Küche)
+  Pub4(Luftfeuchtesensor <br/> Bad)
+
+  %% Subscriber-Clients rechts
+  Sub1(Steuerung Bad Heizkörper)
+  Sub2(Zentralheizungssteuerung)
+  Sub3(Smartphone-App)
+
+  %% Verbindungen Publisher -> Broker
+  Pub1 -->|*publish topic* <br/> Temperatur/Küche| Broker
+  Pub2 -->|*publish topic* <br/> Temperatur/Bad| Broker
+  Pub3 -->|*publish topic* <br/> Luftfeuchte/Küche| Broker
+  Pub4 -->|*publish topic* <br/> Luftfeuchte/Bad| Broker
+
+
+  %% Verbindungen Subscriber -> Broker
+  Sub1 -. *subscribe topic* <br/> Temperatur/Bad .-> Broker
+  Sub2 -. *subscribe topic* <br/> Temperatur/# .->Broker
+  Sub3 -. *subscribe topic* <br/> # .->Broker
+
+  %% Verbindungen Broker -> Subscriber
+  Broker --> Sub1
+  Broker -->Sub2
+  Broker -->Sub3
