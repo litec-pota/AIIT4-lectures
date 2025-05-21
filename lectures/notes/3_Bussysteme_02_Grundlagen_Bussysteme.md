@@ -113,6 +113,27 @@ Auf der Feldebene befinden sich die Sensoren und Aktoren die in der Produktionsa
 
 # Bustoplogien 
 
+Die räumliche Verbindung der Busteilnehmer wird mit dem Begriff Topologie näher spezifiziert. Die Topologie eines Netzes ist entscheidend für seine Ausfallsicherheit. Nur wenn alternative Wege zwischen den Knoten existieren, bleibt bei Ausfällen einzelner Verbindungen die Funktionsfähigkeit teilweise oder ganz erhalten. In der Praxis unterscheidet man zwischen Linien-,  Stern,- und Ringtopologie und Kombinationen davon. 
+
+## Bus/Linientopologie
+
+![Bustoplogie](../imgs/3_Bussysteme_02_Grundlagen_Bussysteme/Linientopologie.png){ width=25% }
+
+Mehrere Teilnehmer werden an eine Busleitung über kurze Stichleitungen angeschlossen. Die Bus-Enden werden zur Vermeidung von Reflexionen terminiert. Eine Störung im Kabel blockiert den gesamten Netzstrang. Es kann immer nur ein Teilnehmer Daten senden. 
+
+## Sterntopologie
+
+![Sterntoplogie](../imgs/3_Bussysteme_02_Grundlagen_Bussysteme/Sterntopologie.png){ width=25% }
+
+Der Master ist der Sternmittelpunkt. Jeder Teilnehmer ist über eine eigene Leitung angekoppelt. Die gesamte Kommunikation wird vom Master gesteuert und über diesen abgewickelt. Fällt der Master aus, so ist keine Kommunikation mehr möglich. Mehrere Slaves können gleichzeitig Daten senden. Der Ausfall eines Teilnehmers hat keine Auswirkung auf den Rest des Bussystems. 
+
+## Ringtopologie
+
+![Ringtoplogie](../imgs/3_Bussysteme_02_Grundlagen_Bussysteme/Ringtopologie.png){ width=25% }
+
+Jede Station ist sowohl Sender als auch Empfänger. Die Daten umkreisen den Ring genau einmal und werden dabei von Station zu Station weitergereicht. Jede Station prüft, ob die Daten an sie gerichtet sind. Ist dies der Fall, übernimmt sie die Eingangsdaten und überträgt eigene Ausgangsdaten in das Telegramm. Eine Störung im Kabel blockiert den gesamten Ring. 
+
 # Fehlererkennung 
+
 
 # Buszugriffssteuerung
